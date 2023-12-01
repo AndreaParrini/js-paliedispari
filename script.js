@@ -4,20 +4,24 @@ Chiedere all’utente di inserire una parola
 Creare una funzione per capire se la parola inserita è palindroma 
 */
 
-// Chiedo all'utente una parola e l'assegno ad una constante
-const userWord = prompt('Inserisci una parola.');
-console.log(userWord);
+// al click del button controllo se la parola è palindroma
+document.getElementById('control').addEventListener('click', function () {
 
-//valorizzo la variabile alla quale assegno il valore restituito dalla funzione
-let reverseWord = reversedWord(userWord);
+    // Chiedo all'utente una parola e l'assegno ad una constante
+    const userWord = document.getElementById('word').value;
+    console.log(userWord);
 
-// in base al risultato della funzione mostro un messaggio all'utente
-if(controlPalindromeWord(userWord, reverseWord)){
-    alert('la parola è palindroma')
-}else{
-    alert('la parola non è palindroma')
-}
+    //valorizzo la variabile alla quale assegno il valore restituito dalla funzione
+    let reverseWord = reversedWord(userWord);
 
+    // in base al risultato della funzione mostro un messaggio all'utente
+    if (controlPalindromeWord(userWord, reverseWord)) {
+        document.getElementById('result').innerHTML = `la parola ${userWord} è palindroma`
+    } else {
+        document.getElementById('result').innerHTML = `la parola ${userWord} non è palindroma`
+    }
+
+})
 
 /* FUNCTION */
 
@@ -35,9 +39,18 @@ function reversedWord(word) {
 }
 
 // creo una funzione per controllare se la parola è palindroma
-function controlPalindromeWord(word, reverseWord){
-    if(word === reverseWord){
+function controlPalindromeWord(word, reverseWord) {
+    if (word === reverseWord) {
         return true;
     }
     return false;
 }
+
+
+/* 
+                Pari e Dispari
+L’utente sceglie pari o dispari e inserisce un numero da 1 a 5.
+Generiamo un numero random (sempre da 1 a 5) per il computer (usando una funzione).
+Sommiamo i due numeri Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione)
+Dichiariamo chi ha vinto. */
+
