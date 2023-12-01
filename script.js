@@ -23,7 +23,7 @@ document.getElementById('control').addEventListener('click', function () {
 
 })
 
-/* FUNCTION */
+/* FUNCTIONS */
 
 // creo una funzion per invertire la parola
 function reversedWord(word) {
@@ -54,3 +54,34 @@ Generiamo un numero random (sempre da 1 a 5) per il computer (usando una funzion
 Sommiamo i due numeri Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione)
 Dichiariamo chi ha vinto. */
 
+const choseUser = prompt('Scegli tra pari e dispari');
+const numberUser = Number(prompt('Inserisci un numero tra 1 e 5'));
+const numberComputer = randomNumber(1, 5);
+console.log(choseUser, numberUser, numberComputer);
+
+const sumOfNumber = numberComputer + numberUser;
+console.log(sumOfNumber);
+
+if(isEven(sumOfNumber) && choseUser === 'pari'){
+    console.log("utente vince");
+}else if( !isEven(sumOfNumber) && choseUser === 'dispari'){
+    console.log("utente vince");
+}else{
+    console.log("computer vince");
+}
+
+
+/* FUNCTIONS */
+// funzione per generare un numero random
+function randomNumber(min, max) {
+    const randomNumberComputer = Math.floor(Math.random() * (max - min + 1) ) + min;
+    return randomNumberComputer;
+  }
+
+// funzione per determinare se un numero paro o disparo
+function isEven(number){
+    if(number % 2 === 0){
+        return true;
+    }
+    return false;
+}
