@@ -54,33 +54,69 @@ Generiamo un numero random (sempre da 1 a 5) per il computer (usando una funzion
 Sommiamo i due numeri Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione)
 Dichiariamo chi ha vinto. */
 
-const choseUser = prompt('Scegli tra pari e dispari');
-const numberUser = Number(prompt('Inserisci un numero tra 1 e 5'));
-const numberComputer = randomNumber(1, 5);
-console.log(choseUser, numberUser, numberComputer);
+document.getElementById('play').addEventListener('click', function () {
 
-const sumOfNumber = numberComputer + numberUser;
-console.log(sumOfNumber);
+    // creo la variavile alla quale assegno il valore della scelta dell'utente
+    const choseUser = document.getElementById('choseuser').value;
+    //inizializzo la variabile del numero utente
+    let numberUser;
+    //controllo se l'utente ha inserito correttamente un numero tra 1 e 5
+    if (Number(document.getElementById('usernumber').value) < 6 && Number(document.getElementById('usernumber').value) > 0 ) {
+        // se è vero assegno il valore alla varibile 
+        numberUser = Number(document.getElementById('usernumber').value);
+        console.log(numberUser);
 
-if(isEven(sumOfNumber) && choseUser === 'pari'){
-    console.log("utente vince");
-}else if( !isEven(sumOfNumber) && choseUser === 'dispari'){
-    console.log("utente vince");
-}else{
-    console.log("computer vince");
-}
+    } else{
+        //altrimenti mando un messaggio all'utente
+        numberUser = NaN;
+        alert('ATTENZIONE, NON HAI INSERITO UN NUMERO TRA 1 E 5!!!!')
+    }
+    
+    // assegno alla variabile il valore che mi ritorna dalla funzione per generare un numero random
+    const numberComputer = randomNumber(1, 5);
 
+    // faccio la somma dei due numeri
+    const sumOfNumber = numberComputer + numberUser;
+
+    // stampo in pagina i valori 
+    document.getElementById('dates').classList.remove('d-none');
+    document.getElementById('numberuser').innerHTML = `Numero Utente : ${numberUser}`;
+    document.getElementById('userchose').innerHTML = `Scelta dell'utente : ${choseUser}`;
+    document.getElementById('numbercomputer').innerHTML = `Numero Computer : ${numberComputer}`;
+    document.getElementById('sumofnumber').innerHTML = `Somma dei numeri : ${sumOfNumber}`;
+    
+    
+    // determino il vincitore
+    if(isNaN(numberUser)){
+
+        document.getElementById('result2').innerHTML = "Inserisci un numero corretto"
+
+    } else if (!isEven(sumOfNumber) && choseUser === 'dispari') {
+    
+        document.getElementById('result2').innerHTML = "L'utente ha vinto"
+    
+    } else if(iisEven(sumOfNumber) && choseUser === 'pari'){
+
+        document.getElementById('result2').innerHTML = "L'utente ha vinto"
+
+    }else {
+    
+        document.getElementById('result2').innerHTML = "Il computer ha vinto"
+    
+    }
+
+})
 
 /* FUNCTIONS */
 // funzione per generare un numero random
 function randomNumber(min, max) {
-    const randomNumberComputer = Math.floor(Math.random() * (max - min + 1) ) + min;
+    const randomNumberComputer = Math.floor(Math.random() * (max - min + 1)) + min;
     return randomNumberComputer;
-  }
+}
 
 // funzione per determinare se un numero paro o disparo
-function isEven(number){
-    if(number % 2 === 0){
+function isEven(number) {
+    if (number % 2 === 0) {
         return true;
     }
     return false;

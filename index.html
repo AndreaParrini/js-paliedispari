@@ -17,8 +17,28 @@
     </div>
 
     <div class="container mt-5">
-        <div class="card bg-secondary p-4 m-3 d-block text-center">
-            
+        <div class="card bg-secondary p-4 m-3 text-center d-block">
+            <div class="d-flex flex-row justify-content-around">
+                <div>
+                    <h5 class="fs-6 text-uppercase">Seleziona Pari o Dispari</h5>
+                    <select id="choseuser" value="nvkev" class="form-select m-2" aria-label="Default select example">
+                        <option value="pari">Pari</option>
+                        <option value="dispari">Dispari</option>
+                    </select>
+                </div>
+                <div>
+                    <h5 class="fs-6 text-uppercase">Seleziona un numero tra 1 e 5</h5>
+                    <input id="usernumber" class="form-control m-2" type="number" min="1" max="5" aria-label="default input example">
+                </div>
+            </div>
+            <div id="play" class="btn btn-primary mt-3">Gioca</div>
+            <div id="result2" class="fs-5 fw-bold text-uppercase mt-3"></div>
+            <div id="dates" class="d-none">
+                <div id="numberuser"></div>
+                <div id="userchose"></div>
+                <div id="numbercomputer"></div>
+                <div id="sumofnumber"></div>
+            </div>
         </div>
     </div>
     
